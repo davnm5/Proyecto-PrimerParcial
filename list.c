@@ -4,30 +4,29 @@
 
 typedef struct Nodo
 {
-    void * contenido;
-    struct Nodo *siguiente;
+    void * contenido; //tipo de dato parametrizado
+    struct Nodo *siguiente;  //definimos la estructura  que tendra dos punteros
     struct Nodo *anterior;
 } nodoLista;
 
 
-nodoLista *crear(void * contenido);
-void modificar(nodoLista ** enlace,void * contenido,void * nuevo_contenido);
-void buscar(nodoLista** enlace, void* contenido);
-void agregarInicio(nodoLista **enlace, void *contenido);
-void agregarFinal(nodoLista **enlace, void *contenido);
-void imprimir(nodoLista *enlace);
-void eliminar(nodoLista **enlace, void *contenido);
+nodoLista *crear(void * contenido); // nos permite crear un nodo
+void modificar(nodoLista ** enlace,void * contenido,void * nuevo_contenido);// permite buscar y modificar dicho contenido
+void buscar(nodoLista** enlace, void* contenido);//permite buscar el contenido de un nodo
+void agregarInicio(nodoLista **enlace, void *contenido);//permite agregar un nodo al inicio
+void agregarFinal(nodoLista **enlace, void *contenido);//permite agregar un nodo al final
+void imprimir(nodoLista *enlace); //permite visualizar la lista final
+void eliminar(nodoLista **enlace, void *contenido); //elimina un nodo que tenga dicho contenido
 
 
 int main(int argc, char *argv[])
 {
     nodoLista *enlace = NULL;
-
     agregarInicio(&enlace,(void*) 1);
     agregarInicio(&enlace,(void*) 5);
     agregarInicio(&enlace,(void*) 3);
     agregarFinal(&enlace,(void*) 7);
-    modificar(&enlace,(void*) 7,(void*) 10);
+    modificar(&enlace,(void*) 7,(void*) 10);   //Hacemos una prueba de la lista Doblemente enlazada
     modificar(&enlace,(void*) 1,(void*) 21);
     eliminar(&enlace,(void*) 5);
     buscar(&enlace,(void*)3);
