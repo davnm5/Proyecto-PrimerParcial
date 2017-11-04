@@ -4,15 +4,6 @@
 #include "../include/lista.h"
 
 
-nodoLista *crear(void * contenido); // nos permite crear un nodo
-void modificar(nodoLista ** enlace,void * contenido,void * nuevo_contenido);// permite buscar y modificar dicho contenido
-void buscar(nodoLista** enlace, void* contenido);//permite buscar el contenido de un nodo
-void agregarInicio(nodoLista **enlace, void *contenido);//permite agregar un nodo al inicio
-void agregarFinal(nodoLista **enlace, void *contenido);//permite agregar un nodo al final
-void imprimir(nodoLista *enlace); //permite visualizar la lista final
-void eliminar(nodoLista **enlace, void *contenido); //elimina un nodo que tenga dicho contenido
-
-
 void buscar(nodoLista **enlace ,void *contenido){
 nodoLista *actual = *enlace;
 int c=0;
