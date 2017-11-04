@@ -1,13 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct Nodo
-{
-    void * contenido; //tipo de dato parametrizado
-    struct Nodo *siguiente;  //definimos la estructura  que tendra dos punteros
-    struct Nodo *anterior;
-} nodoLista;
+#include "../include/lista.h"
 
 
 nodoLista *crear(void * contenido); // nos permite crear un nodo
@@ -17,23 +11,6 @@ void agregarInicio(nodoLista **enlace, void *contenido);//permite agregar un nod
 void agregarFinal(nodoLista **enlace, void *contenido);//permite agregar un nodo al final
 void imprimir(nodoLista *enlace); //permite visualizar la lista final
 void eliminar(nodoLista **enlace, void *contenido); //elimina un nodo que tenga dicho contenido
-
-
-int main(int argc, char *argv[])
-{
-    nodoLista *enlace = NULL;
-    agregarInicio(&enlace,(void*) 1);
-    agregarInicio(&enlace,(void*) 5);
-    agregarInicio(&enlace,(void*) 3);
-    agregarFinal(&enlace,(void*) 7);
-    modificar(&enlace,(void*) 7,(void*) 10);   //Hacemos una prueba de la lista Doblemente enlazada
-    modificar(&enlace,(void*) 1,(void*) 21);
-    eliminar(&enlace,(void*) 5);
-    buscar(&enlace,(void*)3);
-    imprimir(enlace);
-
-    return 0;
-}
 
 
 void buscar(nodoLista **enlace ,void *contenido){
