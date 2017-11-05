@@ -7,4 +7,4 @@ simuladorLRU: src/simuladorLRU.c
 	ar -rcs lib/libhash.a obj/hash.o
 	gcc src/simuladorLRU.c -o bin/simuladorLRU -Llib -llista -lhash
 clean:
-	rm -rf obj/* bin/* lib/*
+	rm -rf obj/* bin/simuladorLRU lib/*
