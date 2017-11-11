@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "../include/lista.h"
 
-
+int cont=1;
 void buscar(nodoLista **enlace ,void *contenido){
 nodoLista *actual = *enlace;
 int c=0;
@@ -76,18 +76,26 @@ void eliminar(nodoLista **enlace, void *contenido)
 
 void agregarFinal(nodoLista **enlace, void *contenido)
 {
+  if(cont==0){
     nodoLista *nuevo = NULL, *aux = *enlace;
 
     nuevo = crear(contenido);
+
     if (nuevo != NULL)
     {
+
         while(aux->siguiente != NULL){
           aux = aux->siguiente;
         }
         nuevo->anterior = aux;
         aux->siguiente = nuevo;
     }
+
 }
+else agregarInicio(enlace,contenido);
+}
+
+
 
 
 void imprimir(nodoLista *enlace)
@@ -96,7 +104,7 @@ void imprimir(nodoLista *enlace)
 
     while(aux != NULL)
     {
-        printf("%lu\n",(long) aux->contenido);
+        printf("%s\n",aux->contenido);
         aux = aux->siguiente;
     }
 }
@@ -104,6 +112,7 @@ void imprimir(nodoLista *enlace)
 
 void agregarInicio(nodoLista **enlace, void *contenido)
 {
+    cont=0;
     nodoLista *nuevo = NULL;
 
     nuevo = crear(contenido);
