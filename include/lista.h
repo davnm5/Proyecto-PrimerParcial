@@ -2,6 +2,7 @@
 #ifndef _LISTA_H
 #define _LISTA_H
 
+
 typedef struct Nodo
 {
      //tipo de dato parametrizado
@@ -12,8 +13,7 @@ typedef struct Nodo
 
 extern nodoLista *crear(char contenido[]);
 extern void modificar(nodoLista ** enlace,char contenido[],char  nuevo_contenido[]);
-extern void agregarInicio(nodoLista **enlace, char contenido[]);
-extern void agregarFinal(nodoLista **enlace, char contenido[]);
+extern void agregar(nodoLista **enlace, char contenido[]);
 extern void imprimir(nodoLista *enlace);
 
 #endif

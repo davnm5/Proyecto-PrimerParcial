@@ -7,6 +7,7 @@
 int cont=1;
 
 
+
 void modificar(nodoLista **enlace,char contenido[],char nuevo_contenido []){
   nodoLista *actual = *enlace;
   int c=0;
@@ -23,29 +24,6 @@ void modificar(nodoLista **enlace,char contenido[],char nuevo_contenido []){
 }
 
 
-void agregarFinal(nodoLista **enlace, char contenido [])
-{
-  if(cont==0){
-    nodoLista *nuevo = NULL, *aux = *enlace;
-
-    nuevo = crear(contenido);
-
-    if (nuevo != NULL)
-    {
-
-        while(aux->masReciente != NULL){
-          aux = aux->masReciente;
-        }
-        nuevo->menosReciente = aux;
-        aux->masReciente = nuevo;
-    }
-
-}
-else agregarInicio(enlace,contenido);
-}
-
-
-
 
 void imprimir(nodoLista *enlace)
 {
@@ -59,7 +37,8 @@ void imprimir(nodoLista *enlace)
 }
 
 
-void agregarInicio(nodoLista **enlace,char contenido[])
+
+void agregar(nodoLista **enlace,char contenido[])
 {
     cont=0;
     nodoLista *nuevo = NULL;
@@ -76,16 +55,19 @@ void agregarInicio(nodoLista **enlace,char contenido[])
 }
 
 
+
 nodoLista *crear(char contenido[])
 {
     nodoLista* nuevo = NULL;
-
     nuevo = (nodoLista*)malloc(sizeof(nodoLista));
-    if( nuevo != NULL)
-    {
-        strcpy(nuevo->contenido,contenido);
-        nuevo->masReciente = NULL;
-        nuevo->menosReciente = NULL;
-    }
+
+
+    if(nuevo!=NULL){
+    strcpy(nuevo->contenido,contenido);
+    nuevo->masReciente = NULL;
+    nuevo->menosReciente = NULL;
+
+  }
+
     return nuevo;
 }
