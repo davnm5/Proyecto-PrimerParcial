@@ -29,7 +29,8 @@ int hash (char *contenido)    //función que devuelve el codigo hash generado pa
    unsigned char *c;
    for(i=1;i<strlen(contenido)+1;i++){
      c=contenido[i-1];
-     valor=valor+(i*(int)c);    // se realiza el hash solicitado sumando los valores ASCII de la cadena y aplicando un módulo
+     valor=valor+(i*(int)c);    /* se realiza la función hash solicitada sumando los valores ASCII de la cadena y multiplicando por su indice
+                                 para luego aplicar el modulo de un primo*/
    }
 
    return (valor%2017);
@@ -94,12 +95,4 @@ void borrar (int clave,HashTable t)
       }
     }
 
-
-}
-
-void imprimirTabla(HashTable t){    //imprime la tabla
-  int i;
-  for(i=0;i<size;i++){
-    printf("pos :%d -> clave: %s\n",i,t[i]);
-  }
 }

@@ -10,8 +10,10 @@ typedef struct Nodo
     char *contenido;
 } nodoLista;
 
+
 typedef struct LRU{
-int size;
+int size,hit,miss;
+char* estado;
 nodoLista *inicio;
 nodoLista *fin;
 }cache;
@@ -21,4 +23,5 @@ extern char* getValor(int clave,HashTable tabla);
 extern void remover(nodoLista ** n);
 extern void set(int clave,char *contenido,HashTable tabla);
 extern void setHead(nodoLista ** n);
+extern cache* retornar();
 #endif

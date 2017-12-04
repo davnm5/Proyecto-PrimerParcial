@@ -13,12 +13,20 @@ void inicializar(int x){     //se inicializa la cache con un tamaño
   aux->size=x;
   aux->inicio=NULL;
   aux->fin=NULL;
+  aux->miss=0;
+  aux->hit=0;
+  aux->estado=" ";
 
 }
 
 /*función que me devuelve un puntero a char
 Se encarga de verificar si el contenido existe en alguna posicion luego de asignar dicho contenido al nodoLista y devolverlo
 */
+
+cache* retornar(){
+  return aux;
+}
+
 char* getValor(int clave,HashTable tabla) {
 
   if(existeClave(clave,tabla)==1){
@@ -75,13 +83,17 @@ char* getValor(int clave,HashTable tabla) {
                  old->contenido=contenido;
                  remover(&old);
                  setUbicaciones(&old);
+                 aux->hit=aux->hit+1;
+                 aux->estado="HIT";
              }else{
                //ingresa cuando la clave del contenido es nueva
+                 aux->miss=aux->miss+1;
+                 aux->estado="MISS";
                  nodoLista *nuevo=NULL;
                  nuevo = (nodoLista*)malloc(sizeof(nodoLista));
                  nuevo->clave=clave;
                  nuevo->contenido=contenido;
-                 if(tamEfectivo(tabla)>=aux->size){  // si el tamaño de cache es mayor que el tamaño de la tabla
+                 if(tamEfectivo(tabla)>=aux->size){ // si el tamaño de cache es mayor que el tamaño de la tabla
                      borrar(aux->fin->clave,tabla); // borra la clave de la tabla
                      remover(&aux->fin); //remueve el nodo fin de la caché
                      setUbicaciones(&nuevo); //como se ha realizado eliminación de un nodo se debe reubicar posiciones
